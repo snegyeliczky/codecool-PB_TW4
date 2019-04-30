@@ -28,10 +28,15 @@ def get_input():
     column =  input("Add meg az oszlopot: ")         
     return row, column
 
-def set_position ():
+def set_position_X ():
     row = int(input("add meg a sort: "))
     column= int(input("add meg az oszlopot: "))
     board[row-1][column-1]="x"
+
+def set_position_O ():
+    row = int(input("add meg a sort: "))
+    column= int(input("add meg az oszlopot: "))
+    board[row-1][column-1]="O"
 
 
 
@@ -40,7 +45,9 @@ board_maker(int(input("Add meg milyen legyen a mezö: ")))
 while True:
     board_printer(board)
     #get_input()
-    set_position ()
+    set_position_X()
+    board_printer(board)
+    set_position_O()
     #print(board)
 
 '''
