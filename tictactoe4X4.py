@@ -61,9 +61,49 @@ def set_position_O ():
     except ValueError:
         set_position_O()
 
+def win_cond_X():
+    for i in range(len(board)):
+        for j in range(len(board)-2):
+            if board[i][j] == "X" and (board[i][j+1] == "X" and board[i][j+2]) == "X":
+                print("X Won!")
+                quit()
+    for i in range(len(board)-2):
+        for j in range(len(board)):
+            if board[i][j] == "X" and (board[i+1][j] == "X" and board[i+2][j]) == "X":
+                print("X Won!")
+                quit()
+    for i in range(len(board)-2):
+        for j in range(len(board)-2):
+            if board[i][j] == "X" and (board[i+1][j+1] == "X" and board[i+2][j+2]) == "X":
+                print("X Won!")
+                quit()
+    for i in range(2,len(board)-2):
+        for j in range(len(board)):
+            if board[i][j] == "X" and (board[i-1][j+1] == "X" and board[i-2][j+2]) == "X":
+                print("X Won!")
+                quit()
 
-
-
+def win_cond_O():
+    for i in range(len(board)):
+        for j in range(len(board)-2):
+            if board[i][j] == "O" and (board[i][j+1] == "O" and board[i][j+2]) == "O":
+                print("O Won!")
+                quit()
+    for i in range(len(board)-2):
+        for j in range(len(board)):
+            if board[i][j] == "O" and (board[i+1][j] == "O" and board[i+2][j]) == "O":
+                print("O Won!")
+                quit()
+    for i in range(len(board)-2):
+        for j in range(len(board)-2):
+            if board[i][j] == "O" and (board[i+1][j+1] == "O" and board[i+2][j+2]) == "O":
+                print("O Won!")
+                quit()
+    for i in range(2,len(board)-2):
+        for j in range(len(board)):
+            if board[i][j] == "O" and (board[i-1][j+1] == "O" and board[i-2][j+2]) == "O":
+                print("O Won!")
+                quit()
 
 board_maker(int(input("Add meg milyen legyen a mezö: ")))
 
@@ -72,7 +112,12 @@ while True:
     #get_input()
     set_position_O()
     board_printer(board)
+    win_cond_X()
+    win_cond_O()
     set_position_X()
+    board_printer(board)
+    win_cond_X()
+    win_cond_O()
     #print(board)
 
 '''
