@@ -11,17 +11,37 @@ def board_maker(quantity):
 
 
 def board_printer(board):
+    print(" ",end='')
+    for i in range(len(board)):
+        print(" "+ str(i+1), end='')
+    print("")    
+    line_number=0
     for i in board:
+        line_number+=1
         print('| ', end='')
         for a in i:
             print(a+' ',end='')
-        print('|')
-       
-        
+        print('|'+str(line_number))
+
+def get_input():
+    row = input("Add meg a sort: ")  
+    column =  input("Add meg az oszlopot: ")         
+    return row, column
+
+def set_position ():
+    row = int(input("add meg a sort: "))
+    column= int(input("add meg az oszlopot: "))
+    board[row-1][column-1]="x"
+
 
 
 board_maker(int(input("Add meg milyen legyen a mezö: ")))
-board_printer(board)
+
+while True:
+    board_printer(board)
+    #get_input()
+    set_position ()
+    #print(board)
 
 '''
 def game_over(game_board):
