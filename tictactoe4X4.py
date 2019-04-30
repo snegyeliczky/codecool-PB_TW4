@@ -2,6 +2,8 @@ import os
 import time
 import random
 
+
+
 board = []
 def board_maker(quantity):
     for i in range(0,quantity):
@@ -29,14 +31,37 @@ def get_input():
     return row, column
 
 def set_position_X ():
-    row = int(input("add meg a sort: "))
-    column= int(input("add meg az oszlopot: "))
-    board[row-1][column-1]="x"
+    try:
+        row = int(input("add meg az X sort: "))
+        column = int(input("add meg az X oszlopot: "))
+        if (row or column ) > len(board):
+            print("megfelelo szamokat adj meg!")
+            set_position_X()
+        elif board[row-1][column-1]!="_":
+            print("Ez a mezö már foglalt")
+            set_position_X()
+        else:
+            board[row-1][column-1]="X"
+    except ValueError:
+        print("SZÁMOT adj meg.")
+        set_position_X()
 
 def set_position_O ():
-    row = int(input("add meg a sort: "))
-    column= int(input("add meg az oszlopot: "))
-    board[row-1][column-1]="O"
+    try:
+        row = int(input("add meg az O sort: "))
+        column = int(input("add meg az O oszlopot: "))
+        if (row or column ) > len(board):
+            print("megfelelo szamokat adj meg!")
+            set_position_O()
+        elif board[row-1][column-1]!="_":
+            print("Ez a mezö már foglalt")
+            set_position_O()
+        else:
+            board[row-1][column-1]="O"
+    except ValueError:
+        set_position_O()
+
+
 
 
 
@@ -45,9 +70,9 @@ board_maker(int(input("Add meg milyen legyen a mezö: ")))
 while True:
     board_printer(board)
     #get_input()
-    set_position_X()
-    board_printer(board)
     set_position_O()
+    board_printer(board)
+    set_position_X()
     #print(board)
 
 '''
