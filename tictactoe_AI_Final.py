@@ -24,8 +24,8 @@ def board_printer(board):
 
 def set_position_X ():
     try:
-        row = int(input("add meg az X sort: "))
-        column = int(input("add meg az X oszlopot: "))
+        row = int(input("add meg a sort: "))
+        column = int(input("add meg az oszlopot: "))
         if (row or column ) > len(board):
             print("megfelelo szamokat adj meg!")
             set_position_X()
@@ -52,6 +52,14 @@ def win_cond_X():
                 win_printer_X()
     if board[0][2] == "X" and (board[1][1] == "X" and board[2][0]) == "X":
               win_printer_X()
+    for i in board:
+        for j in i:
+            if j == "_":
+                return
+    os.system("clear")
+    board_printer(board)
+    print("nincs több lehetöség!!")
+    exit()
 
 def win_cond_O():
     for i in range(len(board)):
@@ -66,6 +74,14 @@ def win_cond_O():
                 win_printer_O()
     if board[0][2] == "O" and (board[1][1] == "O" and board[2][0]) == "O":
               win_printer_O()
+    for i in board:
+        for j in i:
+            if j == "_":
+                return
+    os.system("clear")
+    board_printer(board)
+    print("nincs több lehetöség!!")
+    exit()
 
 def win_printer_O():
     #os.system("clear")
